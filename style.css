@@ -16,3 +16,35 @@ body {
 	background-color: #424242;
 	height: 536px;
 }
+
+.content {
+    content: "";
+	display: block;
+}
+
+h1 {
+    color: #ecf0f1;
+}
+
+.correctbg-color {
+    background-color: #1fb981;
+}
+
+
+.score-count {
+    float: left;
+}
+
+.time-count {
+    float: right;
+}
+
+.word-display {
+	margin-top: 100px;
+}
+
+.word-display span{
+    font-size: 60px;
+    letter-spacing: 1px;
+    color: #ECF0F1;
+}
