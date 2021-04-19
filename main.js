@@ -8,15 +8,6 @@ let start = document.querySelector('#startButton')
 let answer = document.querySelector('#user__input')
 
 
-
-// startButton.addEventListener('click', () => {
-//     alert("Hello World!");
-//     console.log('fml')
-//     let word = Math.random(easyList)
-//     console.log(word)
-//     words.textContent(word)
-// })
-
 startButton.addEventListener("click", () => {
     countDown();
     button.disabled = true;	
@@ -37,7 +28,7 @@ function countDown() {
     }, 1000);
 }
 
-start.addEventListener('click', () => {
+StartButton.addEventListener('click', () => {
     let word = Math.floor(Math.random() * easyList.length)
     console.log(word)
     words.textContent = word
