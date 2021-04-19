@@ -22,6 +22,17 @@ body {
 	display: block;
 }
 
+.attention {
+    padding-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #ecf0f1;
+}
+
+#name-input {
+    margin-bottom: 50px;
+}
+
 h1 {
     color: #ecf0f1;
 }
