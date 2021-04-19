@@ -25,4 +25,4 @@
 
 ### GitHub Repository
 
-https://github.com/BaseCampCoding/js-unit-project-charles-sean.git
+https://github.com/BaseCampCoding/js-unit-project-charles-sean.git 
