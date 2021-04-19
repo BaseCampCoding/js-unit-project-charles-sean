@@ -2,7 +2,7 @@
 Qwertzy
 
 ### Description and Motivation
-This project will be a typing test with high-scores. Even though typing test are a very common project, we wanted to take our spin on it. We watned to take this common project and trun it into, not a different project, but the project with different ways to test people on thier wpm.
+This project will be a typing test with high-scores. Even though typing test are a very common project, we wanted to take our spin on it. We wanted to take this common project and turn it into, not a different project, but the project with different ways to test people on thier wpm.
 
 ### Prior Art
 TypingTest.com, typing.com, keyhero.com, livechat.com
