@@ -4,8 +4,9 @@ let startButton = document.querySelector('#startButton')
 let tempo = document.querySelector('.time');
 let timerDiv =document.querySelector(".time");
 let seconds = 60;
+let start = document.querySelector('#startButton')
+let answer = document.querySelector('#user__input')
 
-console.log(words)
 
 
 // startButton.addEventListener('click', () => {
@@ -36,4 +37,17 @@ function countDown() {
     }, 1000);
 }
 
+start.addEventListener('click', () => {
+    let word = Math.floor(Math.random() * easyList.length)
+    console.log(word)
+    words.textContent = word
+})
+
+answer.addEventListener('spacebar', () => {
+    if (answer == words){
+        console.log('fml')
+    }else{
+        console.log('this one i bet')
+    }
+})
 
