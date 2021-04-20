@@ -18,6 +18,7 @@ function countDown() {
         seconds--;
         tempo.innerHTML = seconds;
         if (seconds === 0) {
+            scoreHtml.innerHTML = "0";
             startButton.disabled = false;
             clearInterval(timer);
             seconds = 60;
@@ -27,14 +28,24 @@ function countDown() {
     }, 1000);
 }
 
-startButton.addEventListener('click', () => {	
-    let word = easyList[Math.floor(Math.random() * easyList.length)]
-    console.log(word)
-    words.textContent = word;
+function random() {
+    let random = Math.random() * (easyList.length - 0) + 0;
+    let word = easyList[random].split("");
+    for (let i = 0; i < word.length; i++) {
+        let span = document.createElement("span");
+        span.classList.add("span");
+        span.innerHTML = word[i];
+        words.appendChild(span);
+    }
+    spans = document.querySelectorAll(".span");
+}
+
+startButton.addEventListener('click', () => {
     countDown();
+    random();
     startButton.disabled = true;
     answer.disabled = false;
-})
+});
 
 answer.addEventListener('keypress', (e) => {
     if (e.key === 'Enter'){
