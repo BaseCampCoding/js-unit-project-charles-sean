@@ -42,7 +42,11 @@ answer.addEventListener('keypress', (e) => {
             score++
             scoreHtml.textContent = score
             answer.value = ''
+            let word = easyList[Math.floor(Math.random() * easyList.length)]
+            console.log(word)
+            words.textContent = word;
         }else{
+            answer.value = ''
             console.log('this one i bet')
         }
     }
