@@ -64,7 +64,8 @@ function countDown() {
             clearInterval(timer);
             seconds = 15;
             timerDiv.innerHTML = "15";
-            startButton.disabled = false;	
+            startButton.disabled = false;
+            answer.disabled = true;	
         }
     }, 1000);
 }
@@ -83,7 +84,6 @@ function random() {
 
 startButton.addEventListener('click', () => {	
     let word = easyList[Math.floor(Math.random() * easyList.length)]
-    console.log(word)
     words.textContent = word;
     countDown();
     startButton.disabled = true;
@@ -101,7 +101,6 @@ answer.addEventListener('keypress', (e) => {
             words.textContent = word;
         }else{
             answer.value = ''
-            console.log('this one i bet')
         }
     }
 })
