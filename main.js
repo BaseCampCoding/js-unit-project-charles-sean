@@ -4,16 +4,13 @@ let startButton = document.querySelector('#startButton')
 let tempo = document.querySelector('.time');
 let timerDiv =document.querySelector(".time");
 let seconds = 60;
+let score = 0;
 let start = document.querySelector('#startButton')
 let answer = document.querySelector('#user__input')
 
 
-startButton.addEventListener("click", () => {
-    countDown();
-    button.disabled = true;	
-});
-
 function countDown() {
+    score = 0;
     let timer = setInterval(function(){
         startButton.disabled = true;
         seconds--;
@@ -28,10 +25,12 @@ function countDown() {
     }, 1000);
 }
 
-StartButton.addEventListener('click', () => {
-    let word = Math.floor(Math.random() * easyList.length)
+startButton.addEventListener('click', () => {	
+    let word = easyList[Math.floor(Math.random() * easyList.length)]
     console.log(word)
-    words.textContent = word
+    words.textContent = word;
+    countDown();
+    button.disabled = true;
 })
 
 answer.addEventListener('spacebar', () => {
