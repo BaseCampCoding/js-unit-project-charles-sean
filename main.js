@@ -40,12 +40,14 @@ function random() {
     spans = document.querySelectorAll(".span");
 }
 
-startButton.addEventListener('click', () => {
+startButton.addEventListener('click', () => {	
+    let word = easyList[Math.floor(Math.random() * easyList.length)]
+    console.log(word)
+    words.textContent = word;
     countDown();
-    random();
     startButton.disabled = true;
     answer.disabled = false;
-});
+})
 
 answer.addEventListener('keypress', (e) => {
     if (e.key === 'Enter'){
