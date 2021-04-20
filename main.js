@@ -39,6 +39,8 @@ let easyList = ['dog', 'cat', 'a', 'about', 'above', 'across', 'act', 'active', 
 "wear", "weather", "wedding", "week", "weight", "welcome", "were", "well", "west", "wet", "what", "wheel", "when", "where", "which", "while", "white", "who", "yard", "yell", 
 "yesterday", "yet", "you", "young", "zero"];
 
+let hardList = ['abject', 'aberration', 'abjure','abrogate','abscond','abstruse','accede','accost','accretion','acumen','adamant','admonish','adumbrate','adverse','advocate','aggrandize','alacrity','alias','ambivalent', 'ascetic', 'ascetic','aspersion','assiduous','atrophy','bane','bashful','beguile','bereft','blandishment','bilk','bombastic','cajole','callous','calumny','camaraderie','candor','capitulate','carouse','caucus','circumscribe','construe','contusion','contrite','contentious','contravene','convivial','corpulence','covet','cupidity','dearth','debacle','debauch','debunk','defunct','demagogue','denigrate','derivative','despot','diaphanous','didactic','dirge','disaffected','discomfit','disparate','dispel','disrepute','divisive','dogmatic','dour','duplicity','duress','eclectic','edict','ebullient','egregious','elegy','elicit','embezzlement','emend','emollient','empirical','emulate','enervate','enfranchise','engender','ephemeral','epistolary','equanimity','equivocal','espouse','evanescent','evince','exacerbate','exhort','execrable','exigent','expedient','expiate','expunge','extraneous','extol','extant','expurgate','fallacious','fatuous','fetter','flagrant','foil','forbearance','forbearance','fortuitous','fractious','garrulous','gourmand','grandiloquent','gratuitous','hapless','hegemony','heterogenous','iconoclast','idiosyncratic','impecunious','impetuous','impinge','impute','inane','inchoate','incontrovertible','incumbent','inexorable','inimical','injunction','inoculate','insidious','instigate','insurgent','interlocutor','intimation','inure','invective','intransigent','inveterate','irreverence','knell','laconic','largesse','legerdemain','libertarian','licentious','linchpin','litigant','maelstrom','maudlin','maverick','mawkish','maxim','mendacious','modicum','morass','mores','munificent','multifarious','nadir','negligent','neophyte','noisome','noxious','obdurate','obfuscate','obstreperous','officious','onerous','ostensible','ostracism','palliate','panacea','paradigm','pariah','partisan','paucity','pejorative','pellucid','penchant','penurious','pert','pernicious',];
+
 let words = document.querySelector('.words')
 let startButton = document.querySelector('#startButton')
 let tempo = document.querySelector('.time');
@@ -48,8 +50,12 @@ let seconds = 15;
 let score = 0;
 let start = document.querySelector('#startButton')
 let answer = document.querySelector('#user__input')
+let easy = document.querySelector('.easy')
+let hard = document.querySelector('.hard')
 
 answer.disabled = true;
+easy.disabled = false;
+hard.disabled = false;
 
 function countDown() {
     score = 0;
@@ -66,6 +72,8 @@ function countDown() {
             timerDiv.innerHTML = "15";
             startButton.disabled = false;
             answer.disabled = true;	
+            easy.disabled = false;
+            hard.disabled = false;
         }
     }, 1000);
 }
@@ -82,26 +90,58 @@ function random() {
     spans = document.querySelectorAll(".span");
 }
 
-startButton.addEventListener('click', () => {	
-    let word = easyList[Math.floor(Math.random() * easyList.length)]
-    words.textContent = word;
-    countDown();
-    startButton.disabled = true;
-    answer.disabled = false;
+easy.addEventListener('click', () => {
+    easy.disabled = true;
+    hard.disabled = true;
+    startButton.addEventListener('click', () => {	
+        let word = easyList[Math.floor(Math.random() * easyList.length)]
+        words.textContent = word;
+        countDown();
+        startButton.disabled = true;
+        answer.disabled = false;
+    })
+    
+    answer.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter'){
+            if (answer.value == words.textContent){
+                score++;
+                scoreHtml.textContent = score;
+                answer.value = '';
+                let word = easyList[Math.floor(Math.random() * easyList.length)]
+                console.log(word)
+                words.textContent = word;
+            }else{
+                answer.value = ''
+            }
+        }
+    })
 })
 
-answer.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter'){
-        if (answer.value == words.textContent){
-            score++;
-            scoreHtml.textContent = score;
-            answer.value = '';
-            let word = easyList[Math.floor(Math.random() * easyList.length)]
-            console.log(word)
-            words.textContent = word;
-        }else{
-            answer.value = ''
+hard.addEventListener('click', () => {
+    easy.disabled = true;
+    hard.disabled = true;
+    startButton.addEventListener('click', () => {	
+        let word = hardList[Math.floor(Math.random() * hardList.length)]
+        words.textContent = word;
+        countDown();
+        startButton.disabled = true;
+        answer.disabled = false;
+    })
+    
+    answer.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter'){
+            if (answer.value == words.textContent){
+                score++;
+                scoreHtml.textContent = score;
+                answer.value = '';
+                let word = hardList[Math.floor(Math.random() * hardList.length)]
+                console.log(word)
+                words.textContent = word;
+            }else{
+                answer.value = ''
+            }
         }
-    }
+    })
 })
+
 
