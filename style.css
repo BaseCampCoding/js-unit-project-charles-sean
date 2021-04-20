@@ -13,7 +13,7 @@ body {
 	width: 100%;
 	text-align: center;
 	padding: 2%;
-	background-color: #424242;
+	background-color: #414141;
 	height: 536px;
 }
 
@@ -41,6 +41,24 @@ h1 {
     background-color: #1fb981;
 }
 
+button {
+    border: none;
+    background-color: #349b2a;
+    box-shadow: 0px 8px 0px 0px #184114;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #fff;
+    display: inline-block;
+    cursor: pointer;
+}
+ 
+button:active {
+    transform: translate(0px, 5px);
+}
 
 .score-count {
     float: left;
