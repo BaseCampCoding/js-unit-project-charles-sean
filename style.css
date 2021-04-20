@@ -50,6 +50,18 @@ h1 {
     float: right;
 }
 
+.score-count p, .score-count span, 
+.time-count p, .time-count span {
+    font-size: 25px;
+    color: #ffffff;
+}
+
+.word-display p {
+    font-size:30px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
 .word-display {
 	margin-top: 100px;
 }
