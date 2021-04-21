@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: #ffffff;
+	background-color: #242424;
 }
 
 .container {
@@ -13,7 +13,7 @@ body {
 	width: 100%;
 	text-align: center;
 	padding: 2%;
-	background-color: #414141;
+	background-color: #6e6e6e;
 	height: 536px;
 }
 
@@ -41,6 +41,16 @@ h1 {
     background-color: #1fb981;
 }
 
+.button-press {
+    background-color: #349b2a;
+    box-shadow: 0px 4px 0px 0px #184114;
+}
+
+.orange-button-press {
+    background-color: #e29c1b !important;
+    box-shadow: 0px 4px 0px 0px #6d470f !important;
+}
+
 button {
     border: none;
     background-color: #349b2a;
@@ -58,6 +68,17 @@ button {
  
 button:active {
     transform: translate(0px, 5px);
+}
+
+/* buttons class */
+.forty-five {
+    background-color: #e29c1b;
+    box-shadow: 0px 8px 0px 0px #6d470f;
+}
+
+.sixty {
+    background-color: #e29c1b;
+    box-shadow: 0px 8px 0px 0px #6d470f;
 }
 
 .score-count {

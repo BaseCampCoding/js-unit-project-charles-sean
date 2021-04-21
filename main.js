@@ -51,21 +51,45 @@ let hardList = ['abject', 'aberration', 'abjure','abrogate','abscond','abstruse'
 'munificent','multifarious','nadir','negligent','neophyte','noisome','noxious','obdurate','obfuscate','obstreperous','officious','onerous','ostensible','ostracism','palliate','panacea',
 'paradigm','pariah','partisan','paucity','pejorative','pellucid','penchant','penurious','pert','pernicious',];
 
-let words = document.querySelector('.words')
-let startButton = document.querySelector('#startButton')
-let tempo = document.querySelector('.time');
+let words = document.querySelector(".words");
+const startButton = document.querySelector("#startButton");
+let tempo = document.querySelector(".time");
 let timerDiv =document.querySelector(".time");
 let scoreHtml = document.querySelector(".score");
 let seconds = 30;
 let score = 0;
-let start = document.querySelector('#startButton')
-let answer = document.querySelector('#user__input')
-let easy = document.querySelector('.easy')
-let hard = document.querySelector('.hard')
+let answer = document.querySelector("#user__input");
+const easy = document.querySelector(".easy");
+const hard = document.querySelector(".hard");
+
+const fortyFiveSec = document.querySelector(".forty-five");
+let fortyFive = 45; // forty five secounds
+fortyFiveSec.addEventListener("click", () => {
+    fortyFiveSec.classList.add("orange-button-press");
+    sixtySec.classList.remove("orange-button-press");
+    fortyFiveSec.disabled = true;
+    sixtySec.disabled = false;
+    seconds = fortyFive;
+    timerDiv.innerHTML = "45";
+})
+
+const sixtySec = document.querySelector(".sixty");
+let sixty = 60; // sixty secounds
+sixtySec.addEventListener("click", () => {
+    fortyFiveSec.classList.remove("orange-button-press");
+    sixtySec.classList.add("orange-button-press");
+    sixtySec.disabled = true;
+    fortyFiveSec.disabled = false;
+    seconds = sixty;
+    timerDiv.innerHTML = "60";
+})
+
 
 answer.disabled = true;
 easy.disabled = false;
 hard.disabled = false;
+fortyFiveSec.disabled = false;
+sixtySec.disabled = false;
 
 function countDown() {
     score = 0;
@@ -100,66 +124,84 @@ function random() {
     spans = document.querySelectorAll(".span");
 }
 
-startButton.addEventListener('click', () => {	
-    let word = easyList[Math.floor(Math.random() * easyList.length)]
-    words.textContent = word;
-    // words.textContent = ""
-    countDown();
-    // random();
-    startButton.disabled = true;
-    answer.disabled = false;
-});
+// startButton.addEventListener("click", () => {
+//     let word = easyList[Math.floor(Math.random() * easyList.length)]
+//     words.textContent = word;
+//     // words.textContent = ""
+//     countDown();
+//     // random();
+//     startButton.disabled = true;
+//     startButton.classList.add("button-press");
+//     answer.disabled = false;
+// });
 
 
-easy.addEventListener('click', () => {
+easy.addEventListener("click", () => {
+    easy.classList.add("button-press");
+    hard.classList.remove("button-press");
     easy.disabled = true;
-    hard.disabled = true;
-    startButton.addEventListener('click', () => {	
+    hard.disabled = false;
+    // easy.disabled = true;
+    // hard.disabled = true;
+    startButton.disabled = false;
+    startButton.addEventListener("click", () => {
+        startButton.classList.add("button-press");
         let word = easyList[Math.floor(Math.random() * easyList.length)]
         words.textContent = word;
         countDown();
         startButton.disabled = true;
         answer.disabled = false;
+        easy.disabled = true;
+        hard.disabled = true;
+        fortyFiveSec.disabled = true;
+        sixtySec.disabled = true;
+
     })
-    
-    answer.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter'){
+    answer.addEventListener("keypress", (e) => {
+        if (e.key === "Enter"){
             if (answer.value == words.textContent){
                 score++;
                 scoreHtml.textContent = score;
-                answer.value = '';
+                answer.value = "";
                 let word = easyList[Math.floor(Math.random() * easyList.length)]
                 console.log(word)
                 words.textContent = word;
-            }else{
-                answer.value = ''
+            } else {
+                answer.value = "";
             }
         }
     })
 })
 
-hard.addEventListener('click', () => {
-    easy.disabled = true;
+hard.addEventListener("click", () => {
+    easy.classList.remove("button-press");
+    hard.classList.add("button-press");
+    easy.disabled = false;
     hard.disabled = true;
-    startButton.addEventListener('click', () => {	
+    startButton.disabled = false;
+    startButton.addEventListener("click", () => {	
+        startButton.classList.add("button-press");
         let word = hardList[Math.floor(Math.random() * hardList.length)]
         words.textContent = word;
-        countDown();
         startButton.disabled = true;
         answer.disabled = false;
+        easy.disabled = true;
+        hard.disabled = true;
+        fortyFiveSec.disabled = true;
+        sixtySec.disabled = true;
     })
     
-    answer.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter'){
+    answer.addEventListener("keypress", (e) => {
+        if (e.key === "Enter"){
             if (answer.value == words.textContent){
                 score++;
                 scoreHtml.textContent = score;
-                answer.value = '';
+                answer.value = "";
                 let word = hardList[Math.floor(Math.random() * hardList.length)]
                 console.log(word)
                 words.textContent = word;
             }else{
-                answer.value = ''
+                answer.value = "";
             }
         }
     })
