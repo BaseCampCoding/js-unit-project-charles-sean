@@ -62,6 +62,9 @@ let start = document.querySelector('#startButton')
 let answer = document.querySelector('#user__input')
 let easy = document.querySelector('.easy')
 let hard = document.querySelector('.hard')
+let correct = document.querySelector('#correct')
+let incorrect = document.querySelector('#incorrect')
+
 
 answer.disabled = true;
 easy.disabled = false;
@@ -100,6 +103,19 @@ function random() {
     spans = document.querySelectorAll(".span");
 }
 
+window.onload = function() {
+    window.setTimeout(fadeout, 2000); 
+}
+
+function fadeOut(){
+    document.querySelector('.fadeout').style.opacity = '0';
+}
+
+function fadeoutIncorrect(){
+    document.querySelector('#incorrect').style.opacity = '0';
+}
+
+
 startButton.addEventListener('click', () => {	
     let word = easyList[Math.floor(Math.random() * easyList.length)]
     words.textContent = word;
@@ -117,7 +133,6 @@ easy.addEventListener('click', () => {
     startButton.addEventListener('click', () => {	
         let word = easyList[Math.floor(Math.random() * easyList.length)]
         words.textContent = word;
-        countDown();
         startButton.disabled = true;
         answer.disabled = false;
     })
@@ -125,6 +140,8 @@ easy.addEventListener('click', () => {
     answer.addEventListener('keypress', (e) => {
         if (e.key === 'Enter'){
             if (answer.value == words.textContent){
+                
+                fadeOut();
                 score++;
                 scoreHtml.textContent = score;
                 answer.value = '';
@@ -132,6 +149,7 @@ easy.addEventListener('click', () => {
                 console.log(word)
                 words.textContent = word;
             }else{
+                fadeoutIncorrect();
                 answer.value = ''
             }
         }
@@ -144,7 +162,6 @@ hard.addEventListener('click', () => {
     startButton.addEventListener('click', () => {	
         let word = hardList[Math.floor(Math.random() * hardList.length)]
         words.textContent = word;
-        countDown();
         startButton.disabled = true;
         answer.disabled = false;
     })
@@ -152,6 +169,8 @@ hard.addEventListener('click', () => {
     answer.addEventListener('keypress', (e) => {
         if (e.key === 'Enter'){
             if (answer.value == words.textContent){
+
+                fadeOut();
                 score++;
                 scoreHtml.textContent = score;
                 answer.value = '';
@@ -159,6 +178,7 @@ hard.addEventListener('click', () => {
                 console.log(word)
                 words.textContent = word;
             }else{
+                fadeoutIncorrect();
                 answer.value = ''
             }
         }

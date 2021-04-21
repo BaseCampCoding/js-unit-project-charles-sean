@@ -11,10 +11,7 @@
         <div class="container">
             <h1>Qwertzy</h1>
             <p class="attention">Can you beat the High Score!</p>
-            <form id="name-input">
-                <input type="text" id="name" name="name" placeholder="Name">
-                <input type="submit" value="Submit">
-            </form>
+            
             <div class="easy-hard">
                 <button class="easy" disabled>Easy</button>
                 <button class="hard" disabled>Hard</button>
@@ -36,18 +33,10 @@
             <div class="user-input">
                 <input type="text" id="user__input" name="word" disabaled>
             </div>
-            
-            
-        </div>
-        <div class="highscores">
-            <div class="easy__highscores">
-                <h2>Easy:</h2>
-                <ul class="easy_list"></ul>
-            </div>
-            <div class="hard__highscores">
-                <h2>Hard:</h2>
-                <ul class="hard_list"></ul>
-            </div>
+            <div class="correct-incorrect">
+                <div id="correct" class="fadeout">Correct</div>
+                <div id="incorrect" class="fadeout">Incorrect</div>
+            </div> 
         </div>
         <script src="main.js"></script>
     </body>
