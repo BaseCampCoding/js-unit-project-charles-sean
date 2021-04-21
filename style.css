@@ -110,3 +110,10 @@ button:active {
     letter-spacing: 1px;
     color: #ECF0F1;
 }
+
+.fadeout {
+    opacity: 1;
+    transition: 1s opacity;
+    text-align: center;
+    font-size:32px;
+}

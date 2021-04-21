@@ -61,6 +61,9 @@ let score = 0;
 let answer = document.querySelector("#user__input");
 const easy = document.querySelector(".easy");
 const hard = document.querySelector(".hard");
+let correct = document.querySelector('#correct');
+let incorrect = document.querySelector('#incorrect');
+
 
 const fortyFiveSec = document.querySelector(".forty-five");
 let fortyFive = 45; // forty five secounds
@@ -124,6 +127,19 @@ function random() {
     spans = document.querySelectorAll(".span");
 }
 
+
+window.onload = function() {
+    window.setTimeout(fadeout, 2000); 
+}
+
+function fadeOut(){
+    document.querySelector('.fadeout').style.opacity = '0';
+}
+
+function fadeoutIncorrect(){
+    document.querySelector('#incorrect').style.opacity = '0';
+}
+
 // startButton.addEventListener("click", () => {
 //     let word = easyList[Math.floor(Math.random() * easyList.length)]
 //     words.textContent = word;
@@ -134,7 +150,6 @@ function random() {
 //     startButton.classList.add("button-press");
 //     answer.disabled = false;
 // });
-
 
 easy.addEventListener("click", () => {
     easy.classList.add("button-press");
@@ -148,7 +163,6 @@ easy.addEventListener("click", () => {
         startButton.classList.add("button-press");
         let word = easyList[Math.floor(Math.random() * easyList.length)]
         words.textContent = word;
-        countDown();
         startButton.disabled = true;
         answer.disabled = false;
         easy.disabled = true;
@@ -160,13 +174,16 @@ easy.addEventListener("click", () => {
     answer.addEventListener("keypress", (e) => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
+                
+                fadeOut();
                 score++;
                 scoreHtml.textContent = score;
                 answer.value = "";
                 let word = easyList[Math.floor(Math.random() * easyList.length)]
                 console.log(word)
                 words.textContent = word;
-            } else {
+            }else{
+                fadeoutIncorrect();
                 answer.value = "";
             }
         }
@@ -194,6 +211,8 @@ hard.addEventListener("click", () => {
     answer.addEventListener("keypress", (e) => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
+
+                fadeOut();
                 score++;
                 scoreHtml.textContent = score;
                 answer.value = "";
@@ -201,6 +220,7 @@ hard.addEventListener("click", () => {
                 console.log(word)
                 words.textContent = word;
             }else{
+                fadeoutIncorrect();
                 answer.value = "";
             }
         }
