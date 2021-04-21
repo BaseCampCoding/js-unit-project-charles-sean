@@ -74,7 +74,7 @@ fortyFiveSec.addEventListener("click", () => {
     sixtySec.disabled = false;
     seconds = fortyFive;
     timerDiv.innerHTML = "45";
-})
+});
 
 const sixtySec = document.querySelector(".sixty");
 let sixty = 60; // sixty secounds
@@ -85,7 +85,7 @@ sixtySec.addEventListener("click", () => {
     fortyFiveSec.disabled = false;
     seconds = sixty;
     timerDiv.innerHTML = "60";
-})
+});
 
 
 answer.disabled = true;
@@ -113,7 +113,7 @@ function countDown() {
             hard.disabled = false;
         }
     }, 1000);
-}
+};
 
 function random() {
     let random = Math.floor(Math.random() * easyList.length)
@@ -132,7 +132,7 @@ window.onload = function() {
     window.setTimeout(fadeout, 2000); 
 }
 
-function fadeOut(){
+function fadeOut() {
     document.querySelector('.fadeout').style.opacity = '0';
 }
 
@@ -163,14 +163,15 @@ easy.addEventListener("click", () => {
         startButton.classList.add("button-press");
         let word = easyList[Math.floor(Math.random() * easyList.length)]
         words.textContent = word;
+        countDown();
         startButton.disabled = true;
         answer.disabled = false;
         easy.disabled = true;
         hard.disabled = true;
         fortyFiveSec.disabled = true;
         sixtySec.disabled = true;
+    });
 
-    })
     answer.addEventListener("keypress", (e) => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
@@ -182,13 +183,13 @@ easy.addEventListener("click", () => {
                 let word = easyList[Math.floor(Math.random() * easyList.length)]
                 console.log(word)
                 words.textContent = word;
-            }else{
+            } else {
                 fadeoutIncorrect();
                 answer.value = "";
-            }
-        }
-    })
-})
+            };
+        };
+    });
+});
 
 hard.addEventListener("click", () => {
     easy.classList.remove("button-press");
@@ -200,14 +201,15 @@ hard.addEventListener("click", () => {
         startButton.classList.add("button-press");
         let word = hardList[Math.floor(Math.random() * hardList.length)]
         words.textContent = word;
+        countDown();
         startButton.disabled = true;
         answer.disabled = false;
         easy.disabled = true;
         hard.disabled = true;
         fortyFiveSec.disabled = true;
         sixtySec.disabled = true;
-    })
-    
+    });
+
     answer.addEventListener("keypress", (e) => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
@@ -219,12 +221,12 @@ hard.addEventListener("click", () => {
                 let word = hardList[Math.floor(Math.random() * hardList.length)]
                 console.log(word)
                 words.textContent = word;
-            }else{
+            } else {
                 fadeoutIncorrect();
                 answer.value = "";
-            }
-        }
-    })
-})
+            };
+        };
+    });
+});
 
 
