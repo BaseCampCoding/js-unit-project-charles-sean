@@ -46,6 +46,11 @@ h1 {
     box-shadow: 0px 4px 0px 0px #184114;
 }
 
+.hard{
+    background-color: #fa0707;
+    box-shadow: 0px 8px 0px 0px #860303;
+};
+
 .orange-button-press {
     background-color: #e29c1b !important;
     box-shadow: 0px 4px 0px 0px #6d470f !important;
@@ -57,8 +62,8 @@ button {
     box-shadow: 0px 8px 0px 0px #184114;
     outline: none;
     border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 22px;
+    padding: 8px 13px;
+    font-size: 20px;
     text-decoration: none;
     margin: 20px;
     color: #fff;
@@ -86,13 +91,73 @@ button:active {
 }
 
 .time-count {
+    position: relative;
+    bottom: 58px;
     float: right;
 }
 
 .score-count p, .score-count span, 
-.time-count p, .time-count span {
+.time-count p, .time-count span,
+.streak-count p, .streak-count span {
     font-size: 25px;
     color: #ffffff;
+}
+
+/* Countdown animation */
+.timeLabel:before{
+    content: '';
+    font-size: 25px;
+    animation-name: countdown;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+}
+
+@keyframes countdown {
+    0% {font-size:25px; opacity:1; content: "Time left"}
+    25% {font-size:20px; opacity:0;}
+    50% {font-size:25px; opacity:1; content: "Time left"}
+    65% {font-size:20px; opacity:0;}
+    80% {font-size:25px; opacity:1; content: "Time left"}
+    90% {font-size:20px; opacity:0;}
+    100% {font-size:25px;opacity:1; content: "Time left"}
+}
+
+/* Streak Animation */
+.streakanimation {
+    font-size: 25px !important;
+    color: #ffffff !important;
+    animation: lost 1s !important;
+    animation-iteration-count: 1 !important;
+    /* margin: 0 260px !important; */
+    border-radius: 10px !important;
+    color: rgb(255, 174, 174) !important;
+}
+
+.streak-count {
+    position: relative;
+    top: 80px;
+    right: 251px;
+}
+
+.streak-count p {
+    color: rgb(252, 150, 16);
+}
+
+@keyframes lost {
+    0% { transform: skewX(-15deg); font-size: 25px; } 
+    5% { transform: skewX(15deg); font-size: 20px;}
+    10% { transform: skewX(-15deg); font-size: 25px;}
+    15% { transform: skewX(15deg); font-size: 20px;}
+    20% { transform: skewX(0deg); font-size: 25px;}
+    100% { transform: skewX(0deg); font-size: 20px;}  
+}
+/* Put color in keyframe and change the ocopacity from 1 to 0 */
+
+/* Input Animation */
+.input-animation {
+    background-color: #1bf02d !important;
+    animation: mymove 1s !important;
+    animation-iteration-count: 1 !important;
 }
 
 .word-display p {
@@ -109,6 +174,20 @@ button:active {
     font-size: 60px;
     letter-spacing: 1px;
     color: #ECF0F1;
+}
+
+.user-input input[type="text"] {
+    background: rgb(85, 85, 85);
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #808080;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 15px;
+    transition: 0.25s;
 }
 
 .fadeout {

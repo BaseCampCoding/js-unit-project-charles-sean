@@ -53,16 +53,21 @@ let hardList = ['abject', 'aberration', 'abjure','abrogate','abscond','abstruse'
 
 let words = document.querySelector(".words");
 const startButton = document.querySelector("#startButton");
-let tempo = document.querySelector(".time");
-let timerDiv =document.querySelector(".time");
+let timeTempo = document.querySelector(".time");
+let timerDiv = document.querySelector(".time");
 let scoreHtml = document.querySelector(".score");
-let seconds = 30;
+let streakHtml = document.querySelector(".streak");
+let streakP = document.querySelector(".streak-word");
+let seconds = 45;
 let score = 0;
+let streak = 0;
 let answer = document.querySelector("#user__input");
 const easy = document.querySelector(".easy");
 const hard = document.querySelector(".hard");
 let correct = document.querySelector('#correct');
 let incorrect = document.querySelector('#incorrect');
+
+let timeLabel = document.querySelector(".time-label");
 
 
 const fortyFiveSec = document.querySelector(".forty-five");
@@ -96,22 +101,37 @@ sixtySec.disabled = false;
 
 function countDown() {
     score = 0;
+    streak = 0;
     let timer = setInterval(function(){
         startButton.disabled = true;
         seconds--;
-        tempo.innerHTML = seconds;
-        if (seconds === -1) {
-            alert("Game Over! Your score is " + score);
-            words.textContent = "Word Here"
+        timeTempo.innerHTML = seconds;
+        if (seconds >= 1 && seconds <= 10) {
+            timeLabel.textContent = "";
+            timeLabel.classList.add("timeLabel");
+            // timerDiv.classList.add("countdown-animation");
+        } else if (seconds === 0) {
+            timeLabel.textContent = "Time left";
+            timeLabel.classList.remove("timeLabel");
+        } else if (seconds === -1) {
+            startButton.classList.remove("button-press");
+            timeLabel.classList.remove("timeLabel");
+            words.textContent = "Word Here";
+            // timerDiv.classList.remove("countdown-animation");
             scoreHtml.innerHTML = "0";
+            streakHtml.innerHTML = "0";
             clearInterval(timer);
-            seconds = 30;
-            timerDiv.innerHTML = "30";
+            seconds = 45;
+            timerDiv.innerHTML = "45";
             startButton.disabled = false;	
             answer.disabled = true;	
             easy.disabled = false;
             hard.disabled = false;
-        }
+            fortyFiveSec.disabled = false;
+            sixtySec.disabled = false;
+            window.location.reload();
+            alert("Game Over! Your score is " + score);
+        };
     }, 1000);
 };
 
@@ -151,49 +171,54 @@ function fadeoutIncorrect(){
 //     answer.disabled = false;
 // });
 
-easy.addEventListener("click", () => {
+easy.addEventListener("click", () => { 
     easy.classList.add("button-press");
-    hard.classList.remove("button-press");
+    hard.style.boxShadow = "0px 8px 0px 0px #860303"
     easy.disabled = true;
     hard.disabled = false;
-    // easy.disabled = true;
-    // hard.disabled = true;
     startButton.disabled = false;
     startButton.addEventListener("click", () => {
         startButton.classList.add("button-press");
         let word = easyList[Math.floor(Math.random() * easyList.length)]
         words.textContent = word;
         countDown();
-        startButton.disabled = true;
-        answer.disabled = false;
-        easy.disabled = true;
-        hard.disabled = true;
-        fortyFiveSec.disabled = true;
-        sixtySec.disabled = true;
+        start()
     });
 
     answer.addEventListener("keypress", (e) => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
-                
                 fadeOut();
                 score++;
+                streak++;
                 scoreHtml.textContent = score;
+                streakHtml.textContent = streak;
                 answer.value = "";
                 let word = easyList[Math.floor(Math.random() * easyList.length)]
-                console.log(word)
                 words.textContent = word;
+                streakP.classList.remove("streakanimation");
             } else {
                 fadeoutIncorrect();
                 answer.value = "";
+                streakP.classList.add("streakanimation");
+                streak = 0;
+                streakHtml.textContent = streak;
             };
         };
     });
 });
 
+function start() {
+    startButton.disabled = true;
+    answer.disabled = false;
+    easy.disabled = true;
+    hard.disabled = true;
+    fortyFiveSec.disabled = true;
+    sixtySec.disabled = true;
+}
 hard.addEventListener("click", () => {
     easy.classList.remove("button-press");
-    hard.classList.add("button-press");
+    hard.style.boxShadow = "0px 4px 0px 0px #860303"
     easy.disabled = false;
     hard.disabled = true;
     startButton.disabled = false;
@@ -202,28 +227,28 @@ hard.addEventListener("click", () => {
         let word = hardList[Math.floor(Math.random() * hardList.length)]
         words.textContent = word;
         countDown();
-        startButton.disabled = true;
-        answer.disabled = false;
-        easy.disabled = true;
-        hard.disabled = true;
-        fortyFiveSec.disabled = true;
-        sixtySec.disabled = true;
+        start();
     });
 
     answer.addEventListener("keypress", (e) => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
-
                 fadeOut();
                 score++;
+                streak++;
                 scoreHtml.textContent = score;
+                streakHtml.textContent = streak;
                 answer.value = "";
                 let word = hardList[Math.floor(Math.random() * hardList.length)]
                 console.log(word)
                 words.textContent = word;
+                streakP.classList.remove("streakanimation");
             } else {
                 fadeoutIncorrect();
                 answer.value = "";
+                streakP.classList.add("streakanimation");
+                streak = 0;
+                streakHtml.textContent = streak;
             };
         };
     });
