@@ -67,14 +67,18 @@ const hard = document.querySelector(".hard");
 let correct = document.querySelector('#correct');
 let incorrect = document.querySelector('#incorrect');
 
-let timeLabel = document.querySelector(".time-label");
+const timeLabel = document.querySelector(".time-label");
 
+const incorrectSound = document.querySelector("#incorrect-sound");
+const correctSound = document.querySelector("#correct-sound");
 
 const fortyFiveSec = document.querySelector(".forty-five");
 let fortyFive = 45; // forty five secounds
 fortyFiveSec.addEventListener("click", () => {
-    fortyFiveSec.classList.add("orange-button-press");
-    sixtySec.classList.remove("orange-button-press");
+    // fortyFiveSec.classList.add("orange-button-press");
+    fortyFiveSec.style.boxShadow = "0px 4px 0px 0px #6d470f";
+    sixtySec.style.boxShadow = "0px 8px 0px 0px #6d470f";
+    // sixtySec.classList.remove("orange-button-press");
     fortyFiveSec.disabled = true;
     sixtySec.disabled = false;
     seconds = fortyFive;
@@ -84,8 +88,10 @@ fortyFiveSec.addEventListener("click", () => {
 const sixtySec = document.querySelector(".sixty");
 let sixty = 60; // sixty secounds
 sixtySec.addEventListener("click", () => {
-    fortyFiveSec.classList.remove("orange-button-press");
-    sixtySec.classList.add("orange-button-press");
+    // fortyFiveSec.classList.remove("orange-button-press");
+    fortyFiveSec.style.boxShadow = "0px 8px 0px 0px #6d470f";
+    sixtySec.style.boxShadow = "0px 4px 0px 0px #6d470f"
+    // sixtySec.classList.add("orange-button-press");
     sixtySec.disabled = true;
     fortyFiveSec.disabled = false;
     seconds = sixty;
@@ -109,7 +115,6 @@ function countDown() {
         if (seconds >= 1 && seconds <= 10) {
             timeLabel.textContent = "";
             timeLabel.classList.add("timeLabel");
-            // timerDiv.classList.add("countdown-animation");
         } else if (seconds === 0) {
             timeLabel.textContent = "Time left";
             timeLabel.classList.remove("timeLabel");
@@ -117,7 +122,6 @@ function countDown() {
             startButton.classList.remove("button-press");
             timeLabel.classList.remove("timeLabel");
             words.textContent = "Word Here";
-            // timerDiv.classList.remove("countdown-animation");
             scoreHtml.innerHTML = "0";
             streakHtml.innerHTML = "0";
             clearInterval(timer);
@@ -189,6 +193,7 @@ easy.addEventListener("click", () => {
         if (e.key === "Enter"){
             if (answer.value == words.textContent){
                 fadeOut();
+                correctSound.play();
                 score++;
                 streak++;
                 scoreHtml.textContent = score;
@@ -199,6 +204,7 @@ easy.addEventListener("click", () => {
                 streakP.classList.remove("streakanimation");
             } else {
                 fadeoutIncorrect();
+                incorrectSound.play();
                 answer.value = "";
                 streakP.classList.add("streakanimation");
                 streak = 0;

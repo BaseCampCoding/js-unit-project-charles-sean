@@ -6,6 +6,7 @@
                 initial-scale=1, shrink-to-fit=no">
         <title>Typing game</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="typing-image.png">
     </head>
     <body>
         <div class="container">
@@ -45,6 +46,12 @@
                 <div id="incorrect" class="fadeout">Incorrect</div>
             </div>
         </div>
+        <audio id="incorrect-sound">
+            <source src="incorrect-sound-effect.mp3"/>
+        </audio>
+        <audio id="correct-sound">
+            <source src="correct-sound-effect.mp3"/>
+        </audio>
         <script src="main.js"></script>
     </body>
 </html>
