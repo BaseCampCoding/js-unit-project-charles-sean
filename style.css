@@ -14,7 +14,8 @@ body {
 	text-align: center;
 	padding: 2%;
 	background-color: #6e6e6e;
-	height: 536px;
+	height: 600px;
+    padding-bottom: 100px;
 }
 
 .content {
@@ -29,12 +30,15 @@ body {
     color: #ecf0f1;
 }
 
-#name-input {
-    margin-bottom: 50px;
-}
-
 h1 {
     color: #ecf0f1;
+}
+
+#correct, #incorrect {
+    padding-top: 10px;
+    position: absolute;
+    top:auto;
+    color: #6e6e6e;
 }
 
 .correctbg-color {
