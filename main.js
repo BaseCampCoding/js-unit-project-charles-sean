@@ -222,6 +222,7 @@ function start() {
     fortyFiveSec.disabled = true;
     sixtySec.disabled = true;
 }
+
 hard.addEventListener("click", () => {
     easy.classList.remove("button-press");
     hard.style.boxShadow = "0px 4px 0px 0px #860303"
