@@ -14,7 +14,8 @@ body {
 	text-align: center;
 	padding: 2%;
 	background-color: #6e6e6e;
-	height: 536px;
+	height: 600px;
+    	padding-bottom: 100px;
 }
 
 .content {
@@ -39,6 +40,13 @@ h1 {
 
 .correctbg-color {
     background-color: #1fb981;
+}
+
+#correct, #incorrect {
+    padding-top: 10px;
+    position: absolute;
+    top:auto;
+    color: #6e6e6e;
 }
 
 .button-press {
