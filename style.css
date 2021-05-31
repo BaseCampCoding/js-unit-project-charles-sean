@@ -178,6 +178,8 @@ button:active {
 }
 
 .word-display {
+    position: relative;
+    bottom: 95px;
 	margin-top: 80px;
 }
 
@@ -188,6 +190,8 @@ button:active {
 }
 
 .user-input input[type="text"] {
+    position: relative;
+    bottom: 55px;
     background: rgb(85, 85, 85);
     display: block;
     margin: 20px auto;
